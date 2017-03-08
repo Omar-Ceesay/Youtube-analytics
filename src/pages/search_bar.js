@@ -14,11 +14,11 @@ class Searchbar extends Component {
   };
   onFormSubmit(e){
     e.preventDefault();
-
-    this.props.getProfile(this.state.username)
-      .then(() => {
-        this.context.router.push(`/people/${this.state.username}`);
-      })
+    this.context.router.push(`/people/${this.state.username}`);
+    // this.props.getProfile(this.state.username)
+    //   .then(() => {
+    //     this.context.router.push(`/people/${this.state.username}`);
+    //   })
   }
   onInputChange(e){
     this.setState({username: e.target.value});
@@ -37,7 +37,7 @@ class Searchbar extends Component {
 }
 
 function mapStateToProps(state){
-  return { person: state.profile.profile }
+  return { person: 'test' }
 }
 
 export default connect(mapStateToProps, {getProfile: getProfile})(Searchbar);

@@ -1,22 +1,23 @@
 import axios from 'axios';
 
 export const FETCH_USER = "FETCH_USER";
-export const FETCH_USERBYUSERNAME = "FETCH_USERBYUSERNAME";
+export const FETCH_VIDEOS = "FETCH_VIDEOS";
 
 const API_KEY = "&key=AIzaSyBMzPmcl0Bc2vLa2O5a5Gn-843K-3x6BfM";
-const ROOT_URL = "https://www.googleapis.com/youtube/v3/channels?part=snippet&forUsername="
+const CHANNEL_URL = "https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&forUsername=";
+const SEARCH_URL = "https://www.googleapis.com/youtube/v3/search?part=snippet&channelId="
 
 export function getProfile(username){
-  const request = axios.get(`${ROOT_URL}${username}${API_KEY}`);
+  const request = axios.get(`${CHANNEL_URL}${username}${API_KEY}`);
   return{
     type: FETCH_USER,
     payload: request
   };
 }
-export function getProfileByUsername(username){
-  const request = axios.get(`https://www.googleapis.com/youtube/v3/channels?part=snippet&forUsername=${username}${API_KEY}`);
+export function fetchVideos(id){
+  const request = axios.get(`${SEARCH_URL}${id}${API_KEY}`);
   return{
-    type: FETCH_USERBYUSERNAME,
+    type: FETCH_VIDEOS,
     payload: request
   };
 }
