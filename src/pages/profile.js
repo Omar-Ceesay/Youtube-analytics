@@ -13,8 +13,6 @@ class ProfilePage extends Component{
   componentWillMount(){
     this.props.getProfile(this.props.params.id);
   }
-  componentDidMount(){
-  }
 
   render(){
     if(!this.props.profile){
@@ -25,11 +23,18 @@ class ProfilePage extends Component{
     return(
       <div>{console.log(this.props.profile)}
         <div className="container">
-          <img className="col-xs-2" src={this.props.profile.items[0].snippet.thumbnails.default.url}></img>
-          <h2 className="col-xs-4">{this.props.profile.items[0].snippet.title}<br/><h4 className="col-xs-4">Subscribers: {this.props.profile.items[0].statistics.subscriberCount}</h4></h2>
+          <div className="col-md-12 text-center">
+            <h2 className="">{this.props.profile.items[0].snippet.title}
+              <img className="pull-right profileImg" src={this.props.profile.items[0].snippet.thumbnails.default.url}></img>
+              <h4 className="">Subscribers: {this.props.profile.items[0].statistics.subscriberCount}
+              </h4>
+            </h2>
+          </div>
         </div>
+        <div className="container">
           <Link to="/" className="btn btn-warning">Go Back</Link>
-        <ProfileVideo queryId={this.props.profile.items[0].id}/>
+          <ProfileVideo queryId={this.props.profile.items[0].id}/>
+        </div>
       </div>
     )
   }
