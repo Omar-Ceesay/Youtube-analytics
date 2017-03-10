@@ -4,7 +4,7 @@ import {Link} from 'react-router';
 
 import ProfileVideo from './profile_videos';
 
-import {getProfile} from '../actions/index';
+import {getProfile, fetchVideos} from '../actions/index';
 
 class ProfilePage extends Component{
   constructor(props){
@@ -20,6 +20,7 @@ class ProfilePage extends Component{
         <div>Loading...</div>
       )
     }
+    {this.props.fetchVideos(this.props.profile.items[0].id)}
     return(
       <div>{console.log(this.props.profile)}
         <div className="container">
@@ -44,4 +45,4 @@ function mapStateToProps(state){
   return { profile: state.profile.profile }
 }
 
-export default connect(mapStateToProps, {getProfile: getProfile})(ProfilePage);
+export default connect(mapStateToProps, {getProfile: getProfile, fetchVideos: fetchVideos})(ProfilePage);

@@ -7,12 +7,6 @@ import IndivVideo from './indiv_video';
 import {fetchVideos} from '../actions/index';
 
 class ProfileVideo extends Component{
-  constructor(props){
-    super(props);
-  }
-  componentDidMount(){
-    this.props.fetchVideos(this.props.queryId);
-  }
   // renderVideos(){
   //   return this.props.videos.map((video) => {
   //     return (
